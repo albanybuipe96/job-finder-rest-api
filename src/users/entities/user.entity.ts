@@ -17,10 +17,10 @@ export class User {
     @Column({ default: 'https://d326fntlu7tb1e.cloudfront.net/uploads/4821d814-ac87-4b22-aa80-ac7336916c9a-403017_avatar_default_head_person_unknown_icon.png' })
     profile: string
 
-    @Column()
+    @Column({ default: '' })
     location: string
 
-    @Column()
+    @Column({ default: '' })
     phone: string
 
     @Column({ default: false })
@@ -29,7 +29,7 @@ export class User {
     @Column({ default: false })
     agent: boolean
 
-    @Column()
+    @Column('text', { array: true, default: [] })
     skills: string[]
 
 }
