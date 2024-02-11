@@ -1,0 +1,38 @@
+### Sign up new user
+POST http://localhost:3000/users/auth/signup
+Content-Type: application/json
+
+{
+    "username": "Buipe",
+    "email": "buipe@nexus.com",
+    "password": "Password@@1"
+}
+
+### Sign in registered user
+POST http://localhost:3000/users/auth/signin
+Content-Type: application/json
+
+{
+    "email": "buipe@nexus.com",
+    "password": "Password@@1"
+}
+
+### Sign out
+POST http://localhost:3000/users/auth/signout
+Content-Type: application/json
+
+{}
+
+### Update registered user
+PATCH  http://localhost:3000/users/7/update
+Content-Type: application/json
+
+{
+    "admin": true
+}
+
+### Get currently signed in user
+GET http://localhost:3000/users/profile
+
+### Get all registered users
+GET http://localhost:3000/users
