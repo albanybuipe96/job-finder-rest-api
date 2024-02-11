@@ -1,13 +1,19 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class Job {
+
+    @PrimaryGeneratedColumn()
+    id: number
 
     @Column()
     title: string
 
     @Column()
     location: string
+
+    @Column()
+    salary: number
 
     @Column()
     description: string
