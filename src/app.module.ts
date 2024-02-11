@@ -7,11 +7,23 @@ import { User } from './users/entities/user.entity'
 const cookieSession = require('cookie-session')
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { COOKIE_SESSION_SECRET, DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_TYPE, DB_USERNAME } from './constants/config.constants'
-import { JobsModule } from './jobs/jobs.module';
+import { JobsModule } from './jobs/jobs.module'
+import { LoggerModule } from 'nestjs-pino'
+import { Job } from './jobs/entities/job.entity'
 
 @Module({
   imports: [
     UsersModule,
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport: {
+          target: 'pino-pretty',
+          options: {
+            singleLine: true,
+          }
+        }
+      }
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
@@ -26,7 +38,7 @@ import { JobsModule } from './jobs/jobs.module';
           username: config.get<string>(DB_USERNAME),
           password: config.get<string>(DB_PASSWORD),
           database: config.get<string>(DB_NAME),
-          entities: [User],
+          entities: [User, Job],
           synchronize: true,
           logging: true,
           autoLoadEntities: true,
