@@ -1,28 +1,23 @@
 import { Transform } from 'class-transformer'
-import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator'
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
 
-export class CreateJobDto {
+export class SearchJobDto {
     @Transform(({ value }) => value.trim().toLowerCase())
     @IsString()
+    @IsOptional()
     title: string
 
     @Transform(({ value }) => value.trim().toLowerCase())
     @IsString()
-    location: string
-
-    @IsString()
     @IsOptional()
-    description: string
-
-    @IsNumber()
-    salary: number
+    location: string
 
     @Transform(({ value }) => value.trim().toLowerCase())
     @IsString()
+    @IsOptional()
     company: string
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
-    url: string
-
+    salary: number
 }
