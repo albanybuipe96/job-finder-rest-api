@@ -1,0 +1,42 @@
+### Create new job
+POST http://localhost:3000/jobs/create
+Content-Type: application/json
+
+{
+    "title": "Snr. Flutter Eng.",
+    "location": "Accra",
+    "salary": 7000,
+    "description": "This role is ideal for individuals who are early in their careers and looking to gain practical experience in mobile app development. Junior Flutter Engineers are expected to demonstrate a willingness to learn and grow, and they may work closely with senior developers to enhance their skills and knowledge.",
+    "company": "NexTech"
+}
+
+### Update job
+PATCH http://localhost:3000/jobs/1/update
+Content-Type: application/json
+
+{
+    "requirements": [
+        "Building and shipping robust applications using a single codebase with Flutter and Dart.",
+        "Writing clean, readable, and well-documented code.",
+        "Ensuring cross-platform compatibility and addressing platform-specific features and differences.",
+        "Managing package dependencies and ensuring compatibility to prevent errors and performance issues.",
+        "Optimizing app performance, especially in areas with complex animations or heavy computations.",
+        "Implementing effective state management solutions, such as Provider, Bloc, or Redux, to handle app state efficiently.",
+        "Collaborating with the team to share feedback and brainstorm ideas to continually improve the development process.",
+        "Staying up-to-date with the latest technologies and Flutter framework updates.",
+        "Leading and managing large-scale Flutter projects, making architectural decisions, conducting code reviews, and mentoring junior developers."
+    ]
+}
+
+### Get all jobs
+GET http://localhost:3000/jobs
+
+
+### Search all jobs
+GET http://localhost:3000/jobs/search?company=nexhub
+
+### Get job by id
+GET http://localhost:3000/jobs/5/detail
+
+### Get job by id
+DELETE http://localhost:3000/jobs/4/delete

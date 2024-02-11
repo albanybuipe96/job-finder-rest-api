@@ -39,18 +39,20 @@ export class UsersController {
     }
 
     @Patch('/:id/update')
+    @GuardRoute()
     update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
         return this.usersService.updateUser(id, updateUserDto)
     }
 
     @Get()
     // @GuardRoute()
-    @UseGuards(AdminGuard)
+    @CheckAdministrativeAccess()
     users() {
         return this.usersService.find(null)
     }
 
     @Get('profile')
+    @GuardRoute()
     async profile(@CurrentUser() user: User) {
         return user
     }
